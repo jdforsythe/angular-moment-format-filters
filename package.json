@@ -1,6 +1,6 @@
 {
   "name": "angular-moment-format-filters",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Date formatting filters using MomentJS and Moment Timezone",
   "main": "src/angular-moment-format-filters.js",
   "directories": {
