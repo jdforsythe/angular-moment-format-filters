@@ -9,8 +9,8 @@ describe('moment format filters', function() {
   it('should configure properly', function() {
     module(function(momentFormatConfigProvider) {
       momentFormatConfigProvider.setConfig({
-        local_timezone: 'America/New_York',
-        server_timezone: 'America/Los_Angeles'
+        localTimezone: 'America/New_York',
+        serverTimezone: 'America/Los_Angeles'
       });
     });
 
@@ -19,7 +19,7 @@ describe('moment format filters', function() {
       expect(momentFormatConfig.getServerTimezone()).toEqual('America/Los_Angeles');
     });
   });
-  
+
 
 
   describe('test filter output', function() {
@@ -27,8 +27,8 @@ describe('moment format filters', function() {
     beforeEach(function() {
       module(function(momentFormatConfigProvider) {
         momentFormatConfigProvider.setConfig({
-          local_timezone: 'America/New_York',
-          server_timezone: 'America/Los_Angeles'
+          localTimezone: 'America/New_York',
+          serverTimezone: 'America/Los_Angeles'
         });
       });
 

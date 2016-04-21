@@ -93,20 +93,20 @@ To set the proper timezones, configure the filters:
 angular.module('myApp', ['angular-moment-format-filters'])
 .config(function(momentFormatConfigProvider) {
   momentFormatConfigProvider.setConfig({
-    local_timezone: 'America/New_York',
-    server_timezone: 'America/Los_Angeles'
+    localTimezone: 'America/New_York',
+    serverTimezone: 'America/Los_Angeles'
   });
 });
 ```
 
 #### Config Options
 
-* `local_timezone`: (string) the standard timezone string for the _end user_ (i.e. browser timezone)
+* `localTimezone`: (string) the standard timezone string for the _end user_ (i.e. browser timezone)
   * default: `'Etc/UTC'`
-* `server_timezone`: (string) the standard timezone string for the _server_
+* `serverTimezone`: (string) the standard timezone string for the _server_
   * default: `'Etc/UTC'`
 
-Conversions will be made *from* `server_timezone`, *to* `local_timezone`
+Conversions will be made *from* `serverTimezone`, *to* `localTimezone`
 
 #### Example
 
