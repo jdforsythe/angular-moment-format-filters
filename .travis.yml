@@ -8,7 +8,7 @@ before_script:
   - npm install -g bower
   - npm install
   - bower install
-  - gulp jshint
+  - gulp lint
 after_script:
   - gulp test
-  
+
