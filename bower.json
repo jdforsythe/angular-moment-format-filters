@@ -2,6 +2,7 @@
   "name": "angular-moment-format-filters",
   "description": "Date formatting filters using MomentJS and Moment Timezone",
   "main": "./dist/angular-moment-format-filters.js",
+  "version": "1.2.0",
   "authors": [
     "Jeremy Forsythe <jdforsythe@gmail.com>"
   ],
