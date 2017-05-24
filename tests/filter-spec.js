@@ -67,6 +67,38 @@ describe('moment format filters', function() {
       expect(result).toEqual(expected);
     });
 
+    it('should return Invalid Date for format filter when not hiding errors', function() {
+      var dt = null,
+        expected = 'Invalid date',
+        result = $filter('momentFormat')(dt, 'MM/DD/YYYY');
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should return empty string for format filter when hiding errors', function() {
+      var dt = null,
+        expected = '',
+        result = $filter('momentFormat')(dt, 'MM/DD/YYYY', true);
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should return Invalid Date for fromNow filter when not hiding errors', function() {
+      var dt = null,
+        expected = 'Invalid date',
+        result = $filter('momentFromNow')(dt);
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should return empty string for fromNow filter when hiding errors', function() {
+      var dt = null,
+        expected = '',
+        result = $filter('momentFromNow')(dt, true);
+
+      expect(result).toEqual(expected);
+    });
+
   });
 
 });
