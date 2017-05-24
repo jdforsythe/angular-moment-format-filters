@@ -26,28 +26,42 @@
   }
 
   function MomentFormatFilter() {
-    return function(dt, formatString) {
-      return moment(dt).format(formatString);
+    return function(dt, formatString, hideErrors) {
+      var mom = _getMomentFromDate(dt);
+      if (hideErrors && !mom)
+        return '';
+
+      return moment(mom).format(formatString);
     };
   }
 
   function MomentFormatServerTimestampFilter(momentFormatConfig) {
-    return function(dt, formatString) {
-      return moment.tz(dt, momentFormatConfig.getServerTimezone())
-                   .tz(momentFormatConfig.getLocalTimezone()).format(formatString);
+    return function(dt, formatString, hideErrors) {
+      var mom = _getConvertedMomentFromDate(dt, momentFormatConfig);
+      if (hideErrors && !mom)
+        return '';
+
+      return moment(mom).format(formatString);
     };
   }
 
   function MomentFromNowFilter() {
-    return function(dt) {
-      return moment(dt).fromNow();
+    return function(dt, hideErrors) {
+      var mom = _getMomentFromDate(dt);
+      if (hideErrors && !mom)
+        return '';
+
+      return moment(mom).fromNow();
     };
   }
 
   function MomentFromNowServerTimestampFilter(momentFormatConfig) {
-    return function(dt) {
-      return moment.tz(dt, momentFormatConfig.getServerTimezone())
-                   .tz(momentFormatConfig.getLocalTimezone()).fromNow();
+    return function(dt, hideErrors) {
+      var mom = _getConvertedMomentFromDate(dt, momentFormatConfig);
+      if (hideErrors && !mom)
+        return '';
+
+      return moment(mom).fromNow();
     };
   }
 
@@ -57,5 +71,25 @@
     .filter('momentFormatServerTimestamp', ['momentFormatConfig', MomentFormatServerTimestampFilter])
     .filter('momentFromNow', MomentFromNowFilter)
     .filter('momentFromNowServerTimestamp', ['momentFormatConfig', MomentFromNowServerTimestampFilter]);
+
+  ////////////////////
+
+  function _getMomentFromDate(dt) {
+    var mom = moment(dt);
+    if (!mom.isValid())
+      return null;
+
+    return mom;
+  }
+
+  function _getConvertedMomentFromDate(dt, momentFormatConfig) {
+    // use the other method to check validity and exit early
+    var mom = _getMomentFromDate(dt);
+    if (!mom)
+      return null;
+
+    return moment.tz(dt, momentFormatConfig.getServerTimezone())
+      .tz(momentFormatConfig.getLocalTimezone());
+  }
 
 })();
