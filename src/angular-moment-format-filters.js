@@ -36,13 +36,13 @@
   }
 
   function MomentFormatServerTimestampFilter(momentFormatConfig) {
-    return function (dt, formatString, hideErrors) {
+    return function(dt, formatString, hideErrors) {
       var mom = _getConvertedMomentFromDate(dt, momentFormatConfig);
       if (hideErrors && !mom)
         return '';
 
       return moment(mom).format(formatString);
-    }
+    };
   }
 
   function MomentFromNowFilter() {
