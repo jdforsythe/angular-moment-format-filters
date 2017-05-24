@@ -16,7 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       './bower_components/moment/moment.js',
-      './bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js',
+      './bower_components/moment-timezone/builds/moment-timezone-with-data-2012-2022.js',
       './node_modules/angular/angular.js',
       './node_modules/angular-mocks/angular-mocks.js',
       './src/angular-moment-format-filters.js',
